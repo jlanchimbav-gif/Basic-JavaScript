@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Bases del Lenguaje</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+        }
+
+        button {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        #output {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            min-height: 50px;
+            border-left: 4px solid #667eea;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+
+        .console-log {
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .error {
+            color: #e74c3c;
+        }
+
+        .success {
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JavaScript - Bases del Lenguaje</h1>
+        <p class="subtitle">Aprende los conceptos fundamentales de JavaScript</p>
+
+        <!-- Operaciones Básicas -->
+        <div class="section">
+            <h2>1️⃣ Operaciones Básicas</h2>
+            <input type="number" id="num1" placeholder="Número 1" value="10">
+            <input type="number" id="num2" placeholder="Número 2" value="5">
+            <button onclick="operacionesBasicas()">Calcular</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Variables y Tipos -->
+        <div class="section">
+            <h2>2️⃣ Variables y Tipos</h2>
+            <button onclick="tiposDeVariable()">Ver Tipos</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Arrays -->
+        <div class="section">
+            <h2>3️⃣ Métodos de Arrays</h2>
+            <input type="text" id="textoArray" placeholder="Ingresa números separados por comas (ej: 1,2,3,4,5)">
+            <button onclick="demosArrays()">Demostrar Arrays</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Strings -->
+        <div class="section">
+            <h2>4️⃣ Strings</h2>
+            <input type="text" id="textoString" placeholder="Ingresa un texto">
+            <button onclick="demosStrings()">Analizar Texto</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Objetos -->
+        <div class="section">
+            <h2>5️⃣ Objetos</h2>
+            <button onclick="demosObjetos()">Ver Objeto</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Funciones -->
+        <div class="section">
+            <h2>6️⃣ Funciones</h2>
+            <input type="number" id="numeroFuncion" placeholder="Ingresa un número" value="5">
+            <button onclick="demosFunciones()">Demostrar</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Condicionales -->
+        <div class="section">
+            <h2>7️⃣ Condicionales</h2>
+            <input type="number" id="edadInput" placeholder="Ingresa tu edad" value="20">
+            <button onclick="demosCondicionales()">Verificar</button>
+            <div id="output"></div>
+        </div>
+
+        <!-- Limpiar Consola -->
+        <div class="section">
+            <button onclick="limpiarSalida()" style="background: #95a5a6;">Limpiar Salida</button>
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        function mostrar(mensaje) {
+            output.innerHTML += `<div class="console-log">${mensaje}</div>`;
+        }
+
+        function limpiarSalida() {
+            output.innerHTML = '';
+        }
+
+        // 1. OPERACIONES BÁSICAS
+        function operacionesBasicas() {
+            limpiarSalida();
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            mostrar(`📊 OPERACIONES BÁSICAS`);
+            mostrar(`Número 1: ${num1}`);
+            mostrar(`Número 2: ${num2}`);
+            mostrar(`---`);
+            mostrar(`Suma: ${num1} + ${num2} = ${num1 + num2}`);
+            mostrar(`Resta: ${num1} - ${num2} = ${num1 - num2}`);
+            mostrar(`Multiplicación: ${num1} * ${num2} = ${num1 * num2}`);
+            mostrar(`División: ${num1} / ${num2} = ${num1 / num2}`);
+            mostrar(`Módulo: ${num1} % ${num2} = ${num1 % num2}`);
+        }
+
+        // 2. TIPOS DE VARIABLE
+        function tiposDeVariable() {
+            limpiarSalida();
+            const variable1 = 42;
+            const variable2 = "Texto";
+            const variable3 = true;
+            const variable4 = { nombre: "Juan", edad: 30 };
+            const variable5 = [1, 2, 3];
+            const variable6 = null;
+            const variable7 = undefined;
+
+            mostrar(`📝 TIPOS DE VARIABLES`);
+            mostrar(`---`);
+            mostrar(`Number: ${variable1} (typeof: ${typeof variable1})`);
+            mostrar(`String: "${variable2}" (typeof: ${typeof variable2})`);
+            mostrar(`Boolean: ${variable3} (typeof: ${typeof variable3})`);
+            mostrar(`Object: ${JSON.stringify(variable4)} (typeof: ${typeof variable4})`);
+            mostrar(`Array: ${JSON.stringify(variable5)} (typeof: ${typeof variable5})`);
+            mostrar(`Null: ${variable6} (typeof: ${typeof variable6})`);
+            mostrar(`Undefined: ${variable7} (typeof: ${typeof variable7})`);
+        }
+
+        // 3. ARRAYS
+        function demosArrays() {
+            limpiarSalida();
+            const input = document.getElementById('textoArray').value;
+            const nums = input ? input.split(',').map(Number) : [1, 2, 3, 4, 5];
+
+            mostrar(`📦 MÉTODOS DE ARRAYS`);
+            mostrar(`Array original: [${nums.join(', ')}]`);
+            mostrar(`---`);
+            mostrar(`length: ${nums.length}`);
+            mostrar(`map (x2): [${nums.map(n => n * 2).join(', ')}]`);
+            mostrar(`filter (pares): [${nums.filter(n => n % 2 === 0).join(', ')}]`);
+            mostrar(`reduce (suma): ${nums.reduce((a, b) => a + b, 0)}`);
+            mostrar(`find (> 3): ${nums.find(n => n > 3)}`);
+            mostrar(`includes(3): ${nums.includes(3)}`);
+        }
+
+        // 4. STRINGS
+        function demosStrings() {
+            limpiarSalida();
+            const texto = document.getElementById('textoString').value || "JavaScript";
+
+            mostrar(`📄 MÉTODOS DE STRINGS`);
+            mostrar(`Texto: "${texto}"`);
+            mostrar(`---`);
+            mostrar(`length: ${texto.length}`);
+            mostrar(`toUpperCase(): ${texto.toUpperCase()}`);
+            mostrar(`toLowerCase(): ${texto.toLowerCase()}`);
+            mostrar(`includes('Java'): ${texto.includes('Java')}`);
+            mostrar(`indexOf('a'): ${texto.indexOf('a')}`);
+            mostrar(`slice(0, 4): ${texto.slice(0, 4)}`);
+            mostrar(`split(''): [${texto.split('').join(', ')}]`);
+        }
+
+        // 5. OBJETOS
+        function demosObjetos() {
+            limpiarSalida();
+            const persona = {
+                nombre: "Ana García",
+                edad: 28,
+                ciudad: "Madrid",
+                ocupacion: "Desarrolladora",
+                presentarse: function () {
+                    return `Hola, soy ${this.nombre}`;
+                }
+            };
+
+            mostrar(`👤 OBJETO PERSONA`);
+            mostrar(`---`);
+            mostrar(`nombre: ${persona.nombre}`);
+            mostrar(`edad: ${persona.edad}`);
+            mostrar(`ciudad: ${persona.ciudad}`);
+            mostrar(`ocupacion: ${persona.ocupacion}`);
+            mostrar(`---`);
+            mostrar(`Método: ${persona.presentarse()}`);
+            mostrar(`Keys: ${Object.keys(persona).join(', ')}`);
+            mostrar(`JSON: ${JSON.stringify(persona, null, 2)}`);
+        }
+
+        // 6. FUNCIONES
+        function demosFunciones() {
+            limpiarSalida();
+            const n = parseInt(document.getElementById('numeroFuncion').value) || 5;
+
+            function factorial(num) {
+                if (num <= 1) return 1;
+                return num * factorial(num - 1);
+            }
+
+            const cuadrado = x => x * x;
+            const esPar = x => x % 2 === 0;
+
+            mostrar(`⚙️ FUNCIONES`);
+            mostrar(`Número: ${n}`);
+            mostrar(`---`);
+            mostrar(`Cuadrado: ${n}² = ${cuadrado(n)}`);
+            mostrar(`Factorial: ${n}! = ${factorial(n)}`);
+            mostrar(`¿Es par?: ${esPar(n) ? 'Sí' : 'No'}`);
+        }
+
+        // 7. CONDICIONALES
+        function demosCondicionales() {
+            limpiarSalida();
+            const edad = parseInt(document.getElementById('edadInput').value) || 20;
+
+            let estado = '';
+            if (edad < 13) {
+                estado = 'Niño/a';
+            } else if (edad < 18) {
+                estado = 'Adolescente';
+            } else if (edad < 65) {
+                estado = 'Adulto/a';
+            } else {
+                estado = 'Adulto mayor';
+            }
+
+            const puedeVotar = edad >= 18;
+            const puedeConducir = edad >= 18;
+
+            mostrar(`📋 CONDICIONALES`);
+            mostrar(`Edad: ${edad}`);
+            mostrar(`---`);
+            mostrar(`Clasificación: ${estado}`);
+            mostrar(`¿Puede votar?: ${puedeVotar ? '✅ Sí' : '❌ No'}`);
+            mostrar(`¿Puede conducir?: ${puedeConducir ? '✅ Sí' : '❌ No'}`);
+        }
+    </script>
+</body>
+</html>
